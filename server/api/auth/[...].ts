@@ -1,5 +1,11 @@
+import { z } from "zod";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NuxtAuthHandler } from "#auth";
+
+const userSchema = z.object({
+  username: z.string(),
+  password: z.string(),
+});
 
 export default NuxtAuthHandler({
   secret: "your-secret-here",
@@ -17,24 +23,25 @@ export default NuxtAuthHandler({
           type: "password",
         },
       },
-      authorize(credentials: any) {
-        const user = {
-          id: "1",
-          name: "J Smith",
-          username: "jsmith",
-          password: "hunter2",
-        };
+      async authorize(credentials: unknown) {
+        try {
+          const resp = userSchema.safeParse(credentials);
+          if (!resp.success) {
+            return null;
+          }
 
-        if (
-          credentials?.username === user.username &&
-          credentials?.password === user.password
-        ) {
-          return user;
-        } else {
-          console.error(
-            "Warning: Malicious login attempt registered, bad credentials provided"
-          );
+          const user = await global.$prisma.user.findFirstOrThrow({
+            where: {
+              username: resp.data.username,
+            },
+          });
 
+          if (user.password !== resp.data.password) {
+            return null;
+          }
+
+          return { name: user.username };
+        } catch (error) {
           return null;
         }
       },

@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@sidebase/nuxt-auth": "^0.6.0-beta.3",
+    "@sidebase/nuxt-auth": "^0.5",
     "@types/node": "^18.17.1",
     "autoprefixer": "^10.4.14",
     "nuxt": "^3.6.5",

@@ -15,5 +15,14 @@ export default defineNuxtConfig({
     { path: "~/components/atoms", prefix: "Atom", pathPrefix: false },
     { path: "~/components/molecules", prefix: "Molecule", pathPrefix: false },
     { path: "~/components/organisms", pathPrefix: false },
+    { path: "~/components/pages" },
   ],
+  vite: {
+    vue: {
+      script: {
+        propsDestructure: true,
+        defineModel: true,
+      },
+    },
+  },
 });

@@ -1,7 +1,15 @@
 <template>
   <div class="flex gap-4 items-center">
-    <atom-button @click="runSignin">singin</atom-button>
-    <atom-button @click="signOut">signout</atom-button>
+    <atom-button
+      @click="
+        () => {
+          runSignin();
+        }
+      "
+      variant="error"
+    >
+      click
+    </atom-button>
   </div>
 
   {{ data }}

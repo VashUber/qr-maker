@@ -1,15 +1,10 @@
-import { z } from "zod";
-
-const userSchema = z.object({
-  username: z.string(),
-  password: z.string(),
-});
+import { userAuthScheme } from "~/scheme";
 
 export default defineEventHandler(async (e) => {
   const body = await readBody(e);
   setResponseStatus(e, 200);
 
-  const resp = userSchema.safeParse(body);
+  const resp = userAuthScheme.safeParse(body);
   if (!resp.success) {
     setResponseStatus(e, 401);
     return {

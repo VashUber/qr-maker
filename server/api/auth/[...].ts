@@ -1,11 +1,6 @@
-import { z } from "zod";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NuxtAuthHandler } from "#auth";
-
-const userSchema = z.object({
-  username: z.string(),
-  password: z.string(),
-});
+import { userAuthScheme } from "~/scheme";
 
 export default NuxtAuthHandler({
   secret: "your-secret-here",
@@ -25,7 +20,7 @@ export default NuxtAuthHandler({
       },
       async authorize(credentials: unknown) {
         try {
-          const resp = userSchema.safeParse(credentials);
+          const resp = userAuthScheme.safeParse(credentials);
           if (!resp.success) {
             return null;
           }

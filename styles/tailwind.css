@@ -9,3 +9,9 @@
 body {
   @apply bg-gray-800;
 }
+
+@layer components {
+  .page {
+    @apply mt-4;
+  }
+}

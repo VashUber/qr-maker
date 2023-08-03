@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from 'zod'
 
 export const userAuthScheme = z.object({
   username: z.string(),
-  password: z.string(),
-});
+  password: z.string()
+})

@@ -1,31 +1,31 @@
 export default defineNuxtConfig({
-  modules: ["@sidebase/nuxt-auth"],
+  modules: ['@sidebase/nuxt-auth'],
   devtools: { enabled: true },
   devServer: {
-    port: 3000,
+    port: 3000
   },
-  css: ["~/styles/tailwind.css"],
+  css: ['~/styles/tailwind.css'],
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
   },
   components: [
-    { path: "~/components/atoms", prefix: "Atom", pathPrefix: false },
-    { path: "~/components/molecules", prefix: "Molecule", pathPrefix: false },
-    { path: "~/components/organisms", prefix: "Organism", pathPrefix: false },
-    { path: "~/components/pages" },
+    { path: '~/components/atoms', prefix: 'Atom', pathPrefix: false },
+    { path: '~/components/molecules', prefix: 'Molecule', pathPrefix: false },
+    { path: '~/components/organisms', prefix: 'Organism', pathPrefix: false },
+    { path: '~/components/pages' }
   ],
   dir: {
-    layouts: "components/templates",
+    layouts: 'components/templates'
   },
   vite: {
     vue: {
       script: {
         propsDestructure: true,
-        defineModel: true,
-      },
-    },
-  },
-});
+        defineModel: true
+      }
+    }
+  }
+})

@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 
 export default defineNitroPlugin(() => {
-  const prisma = new PrismaClient();
+  const prisma = new PrismaClient()
 
-  global.$prisma = prisma;
-});
+  global.$prisma = prisma
+})

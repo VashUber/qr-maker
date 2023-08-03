@@ -1,11 +1,11 @@
 <template>
-  <input type="text" v-model="modelValue" />
+  <input v-model="modelValue" type="text" class="input" />
 </template>
 
 <script setup lang="ts">
 const modelValue = defineModel<string>({
-  required: true,
-});
+  required: true
+})
 </script>
 
 <style scoped></style>

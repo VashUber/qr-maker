@@ -1,29 +1,26 @@
 <template>
-  <div class="flex gap-4 items-center">
+  <div class="flex items-center gap-4">
     <atom-button
+      variant="error"
       @click="
         () => {
-          runSignin();
+          runSignin()
         }
-      "
-      variant="error"
-    >
+      ">
       click
     </atom-button>
   </div>
-
-  {{ data }}
 </template>
 
 <script setup lang="ts">
-const { status, data, signIn, signOut } = useAuth();
+const { signIn } = useAuth()
 
 const runSignin = () => {
-  signIn("credentials", {
-    username: "samara",
-    password: "samara",
-  });
-};
+  signIn('credentials', {
+    username: 'samara',
+    password: 'samara'
+  })
+}
 </script>
 
 <style scoped></style>

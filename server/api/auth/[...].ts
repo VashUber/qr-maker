@@ -1,45 +1,45 @@
-import CredentialsProvider from "next-auth/providers/credentials";
-import { NuxtAuthHandler } from "#auth";
-import { userAuthScheme } from "~/scheme";
+import CredentialsProvider from 'next-auth/providers/credentials'
+import { NuxtAuthHandler } from '#auth'
+import { userAuthScheme } from '~/scheme'
 
 export default NuxtAuthHandler({
-  secret: "your-secret-here",
+  secret: 'your-secret-here',
   providers: [
     // @ts-expect-error
     CredentialsProvider.default({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
         username: {
-          label: "Username",
-          type: "text",
+          label: 'Username',
+          type: 'text'
         },
         password: {
-          label: "Password",
-          type: "password",
-        },
+          label: 'Password',
+          type: 'password'
+        }
       },
       async authorize(credentials: unknown) {
         try {
-          const resp = userAuthScheme.safeParse(credentials);
+          const resp = userAuthScheme.safeParse(credentials)
           if (!resp.success) {
-            return null;
+            return null
           }
 
           const user = await global.$prisma.user.findFirstOrThrow({
             where: {
-              username: resp.data.username,
-            },
-          });
+              username: resp.data.username
+            }
+          })
 
           if (user.password !== resp.data.password) {
-            return null;
+            return null
           }
 
-          return { name: user.username };
+          return { name: user.username }
         } catch (error) {
-          return null;
+          return null
         }
-      },
-    }),
-  ],
-});
+      }
+    })
+  ]
+})

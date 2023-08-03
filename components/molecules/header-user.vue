@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-const { data } = useAuth();
+const { data } = useAuth()
 </script>
 
 <style scoped></style>

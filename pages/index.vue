@@ -1,28 +1,32 @@
 <template>
-  <div>
-    <canvas ref="canvas" />
-    <atom-input v-model.trim="qrSource" />
+  <div class="page">
+    <div class="flex flex-col items-center gap-2">
+      <div class="h-72 w-72 bg-white">
+        <canvas ref="canvas" class="!h-72 !w-72" />
+      </div>
+      <atom-input v-model.trim="qrSource" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import qrcode from "qrcode";
-import { watchDebounced } from "@vueuse/core";
+import { toCanvas } from 'qrcode'
+import { watchDebounced } from '@vueuse/core'
 
-const canvas = ref<HTMLCanvasElement>(null!);
-const qrSource = ref("");
+const canvas = ref<HTMLCanvasElement>(null!)
+const qrSource = ref('')
 
 watchDebounced(
   qrSource,
   () => {
-    if (!qrSource.value.length) return;
+    if (!qrSource.value.length) return
 
-    qrcode.toCanvas(canvas.value, qrSource.value);
+    toCanvas(canvas.value, qrSource.value)
   },
   {
-    debounce: 500,
+    debounce: 500
   }
-);
+)
 </script>
 
 <style scoped></style>

@@ -4,8 +4,8 @@ export default defineEventHandler(async (e) => {
   const body = await readBody(e);
   setResponseStatus(e, 200);
 
-  const resp = userAuthScheme.safeParse(body);
-  if (!resp.success) {
+  const val = userAuthScheme.safeParse(body);
+  if (!val.success) {
     setResponseStatus(e, 401);
     return {
       msg: "error",
@@ -13,7 +13,9 @@ export default defineEventHandler(async (e) => {
   }
 
   try {
-    await global.$prisma.user.create({ data: resp.data });
+    await global.$prisma.$transaction([
+      global.$prisma.user.create({ data: val.data }),
+    ]);
   } catch (error) {
     setResponseStatus(e, 401);
     return {

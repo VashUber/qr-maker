@@ -1,21 +1,28 @@
 <template>
-  <div class="flex gap-4 items-center">
-    <atom-button @click="runSignin">singin</atom-button>
-    <atom-button @click="signOut">signout</atom-button>
+  <div>
+    <canvas ref="canvas" />
+    <atom-input v-model.trim="qrSource" />
   </div>
-
-  {{ data }}
 </template>
 
 <script setup lang="ts">
-const { status, data, signIn, signOut } = useAuth();
+import qrcode from "qrcode";
+import { watchDebounced } from "@vueuse/core";
 
-const runSignin = () => {
-  signIn("credentials", {
-    username: "samara",
-    password: "samara",
-  });
-};
+const canvas = ref<HTMLCanvasElement>(null!);
+const qrSource = ref("");
+
+watchDebounced(
+  qrSource,
+  () => {
+    if (!qrSource.value.length) return;
+
+    qrcode.toCanvas(canvas.value, qrSource.value);
+  },
+  {
+    debounce: 500,
+  }
+);
 </script>
 
 <style scoped></style>

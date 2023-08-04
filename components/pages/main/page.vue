@@ -1,8 +1,5 @@
 <template>
-  <organism-header />
-  <div class="page">
-    <slot />
-  </div>
+  <organism-qr-generator />
 </template>
 
 <script setup lang="ts"></script>

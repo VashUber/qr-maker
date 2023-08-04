@@ -1,5 +1,8 @@
 <template>
-  <button class="py-2 px-4 rounded-md" :class="cl">
+  <button
+    class="rounded-md px-4 py-2 transition-all active:scale-110 active:ring-2 disabled:brightness-75 disabled:active:scale-100 disabled:active:ring-0"
+    :class="cl"
+    v-bind="$attrs">
     <slot />
   </button>
 </template>

@@ -8,4 +8,8 @@ const modelValue = defineModel<string>({
 })
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.input {
+  @apply min-w-[180px] rounded-md px-2 py-1 text-gray-800 outline-none;
+}
+</style>

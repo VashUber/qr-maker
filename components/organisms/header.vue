@@ -2,10 +2,8 @@
   <header class="header">
     <atom-wrapper>
       <div class="header__content">
-        <div>1</div>
-        <div>
-          <molecule-header-user />
-        </div>
+        <molecule-header-menu />
+        <molecule-header-user />
       </div>
     </atom-wrapper>
   </header>
@@ -15,10 +13,10 @@
 
 <style scoped lang="scss">
 .header {
-  @apply bg-slate-700 shadow-md h-14;
+  @apply h-14 bg-slate-700 shadow-md;
 
   &__content {
-    @apply flex items-center justify-between h-full;
+    @apply flex h-full items-center justify-between;
   }
 }
 </style>

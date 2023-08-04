@@ -13,9 +13,8 @@
       add
     </button>
 
-    <div v-for="qr in data" :key="qr.id">
-      {{ qr.id }} -
-      <img :src="qr.content" class="!h-40 !w-40" alt="" />
+    <div>
+      <molecule-qr-thumbs v-if="data" :thumbs="data" />
     </div>
   </div>
 </template>

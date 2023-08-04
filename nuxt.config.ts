@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     { path: '~/components/atoms', prefix: 'Atom', pathPrefix: false },
     { path: '~/components/molecules', prefix: 'Molecule', pathPrefix: false },
     { path: '~/components/organisms', prefix: 'Organism', pathPrefix: false },
-    { path: '~/components/pages' }
+    { path: '~/components/pages', prefix: 'Page' }
   ],
   dir: {
     layouts: 'components/templates'

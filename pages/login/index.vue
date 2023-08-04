@@ -1,5 +1,5 @@
 <template>
-  <login-page />
+  <page-login />
 </template>
 
 <script setup lang="ts"></script>

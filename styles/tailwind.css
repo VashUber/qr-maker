@@ -12,6 +12,6 @@ body {
 
 @layer components {
   .page {
-    @apply mt-4;
+    @apply pt-4;
   }
 }

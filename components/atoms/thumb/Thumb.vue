@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-2">
-    <img :src="img" :alt="title" class="!h-40 !w-40" />
+    <img :src="img" :alt="title" class="!w-full" />
     <h2>
       {{ title }}
     </h2>

@@ -1,8 +1,8 @@
 <template>
   <organism-header />
-  <div class="page">
+  <atom-wrapper class="page">
     <slot />
-  </div>
+  </atom-wrapper>
 </template>
 
 <script setup lang="ts"></script>

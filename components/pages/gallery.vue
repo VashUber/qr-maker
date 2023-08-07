@@ -1,27 +1,13 @@
 <template>
   <div>
-    {{ route.params.page }}
+    <molecule-qr-thumbs v-if="data" :thumbs="data.data" />
 
-    <button
-      @click="
-        router.push({
-          params: {
-            page: +route.params.page + 1
-          }
-        })
-      ">
-      add
-    </button>
-
-    <div>
-      <molecule-qr-thumbs v-if="data" :thumbs="data" />
-    </div>
+    <organism-pagination v-if="data" :total="data?.totalPage" />
   </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute()
-const router = useRouter()
 
 const page = computed(() => route.params.page as string)
 

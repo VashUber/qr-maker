@@ -1,16 +1,26 @@
 <template>
   <div class="pagination">
-    <atom-button v-if="!isFirst" @click="updatePage(-firstVisible + 1)"> {{ '<<' }} </atom-button>
+    <atom-button v-if="!isFirst" @click="updatePage(-firstVisible + 1)">
+      {{ '<<' }}
+    </atom-button>
 
-    <atom-button :disabled="isFirst" @click="updatePage(-1)"> {{ '<' }} </atom-button>
+    <atom-button :disabled="isFirst" @click="updatePage(-1)">
+      {{ '<' }}
+    </atom-button>
 
     <atom-button v-for="i in pages" :key="i" @click="updatePage(i - 1)">
       {{ firstVisible + i - 1 }}
     </atom-button>
 
-    <atom-button :disabled="lastVisible >= total" @click="updatePage(1)"> {{ '>' }} </atom-button>
+    <atom-button :disabled="lastVisible >= total" @click="updatePage(1)">
+      {{ '>' }}
+    </atom-button>
 
-    <atom-button v-if="lastVisible < total" @click="updatePage(-firstVisible + total)"> {{ '>>' }} </atom-button>
+    <atom-button
+      v-if="lastVisible < total"
+      @click="updatePage(-firstVisible + total)">
+      {{ '>>' }}
+    </atom-button>
   </div>
 </template>
 

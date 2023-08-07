@@ -16,7 +16,9 @@ export default defineEventHandler(async (e) => {
   val.data.password = await hash(val.data.password, 10)
 
   try {
-    await global.$prisma.$transaction([global.$prisma.user.create({ data: val.data })])
+    await global.$prisma.$transaction([
+      global.$prisma.user.create({ data: val.data })
+    ])
   } catch (error) {
     setResponseStatus(e, 401)
     return {

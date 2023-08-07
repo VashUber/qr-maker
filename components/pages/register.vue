@@ -2,7 +2,10 @@
   <div class="flex min-h-[80vh] flex-col items-center justify-center gap-4">
     <form class="flex flex-col gap-2" @submit.prevent="signin">
       <atom-input v-model="username" placeholder="Enter username" />
-      <atom-input v-model="password" type="password" placeholder="Enter password" />
+      <atom-input
+        v-model="password"
+        type="password"
+        placeholder="Enter password" />
       <atom-button>register</atom-button>
     </form>
 

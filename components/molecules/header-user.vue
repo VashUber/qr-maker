@@ -8,7 +8,7 @@
 
     <template v-else>
       <nuxt-link to="/login">
-        <atom-button> login </atom-button>
+        <atom-button>login</atom-button>
       </nuxt-link>
     </template>
   </div>

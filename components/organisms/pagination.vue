@@ -10,7 +10,7 @@
 
     <atom-button :disabled="lastVisible >= total" @click="updatePage(1)"> {{ '>' }} </atom-button>
 
-    <atom-button v-if="lastVisible < total" @click="updatePage(total - 1)"> {{ '>>' }} </atom-button>
+    <atom-button v-if="lastVisible < total" @click="updatePage(-firstVisible + total)"> {{ '>>' }} </atom-button>
   </div>
 </template>
 

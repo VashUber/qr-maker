@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <molecule-qr-thumbs v-if="data" :thumbs="data.data" />
+  <div v-if="data?.data.length">
+    <molecule-qr-thumbs :thumbs="data.data" />
 
-    <organism-pagination v-if="data" :total="data?.totalPage" />
+    <organism-pagination v-if="data.totalPage > 1" :total="data.totalPage" />
   </div>
+
+  <div v-else>You didn't save any qr codes</div>
 </template>
 
 <script setup lang="ts">

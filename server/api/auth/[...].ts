@@ -1,9 +1,13 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { compare } from 'bcrypt'
 import { NuxtAuthHandler } from '#auth'
 import { userAuthScheme } from '~/scheme'
 
 export default NuxtAuthHandler({
   secret: 'your-secret-here',
+  pages: {
+    signIn: '/login'
+  },
   providers: [
     // @ts-expect-error
     CredentialsProvider.default({
@@ -31,9 +35,9 @@ export default NuxtAuthHandler({
             }
           })
 
-          if (user.password !== resp.data.password) {
-            return null
-          }
+          const res = await compare(resp.data.password, user.password)
+
+          if (!res) return null
 
           return { name: user.username }
         } catch (error) {

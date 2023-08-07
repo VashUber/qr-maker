@@ -1,3 +1,4 @@
+import { hash } from 'bcrypt'
 import { userAuthScheme } from '~/scheme'
 
 export default defineEventHandler(async (e) => {
@@ -11,6 +12,8 @@ export default defineEventHandler(async (e) => {
       msg: 'error'
     }
   }
+
+  val.data.password = await hash(val.data.password, 10)
 
   try {
     await global.$prisma.$transaction([global.$prisma.user.create({ data: val.data })])

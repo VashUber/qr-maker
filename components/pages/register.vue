@@ -3,25 +3,28 @@
     <form class="flex flex-col gap-2" @submit.prevent="signin">
       <atom-input v-model="username" placeholder="Enter username" />
       <atom-input v-model="password" type="password" placeholder="Enter password" />
-      <atom-button>login</atom-button>
+      <atom-button>register</atom-button>
     </form>
 
-    <nuxt-link to="/register">or register</nuxt-link>
+    <nuxt-link to="/login">or login</nuxt-link>
   </div>
 </template>
 
 <script setup lang="ts">
-const { signIn } = useAuth()
+const router = useRouter()
 
 const username = ref('')
 const password = ref('')
 
 const signin = async () => {
-  await signIn('credentials', {
-    username: username.value,
-    password: password.value,
-    callbackUrl: '/'
+  await useFetch('/api/register', {
+    method: 'POST',
+    body: {
+      username: username.value,
+      password: password.value
+    }
   })
+  router.push('/login')
 }
 </script>
 
